@@ -19,3 +19,12 @@
 
 #Linux files
 /.directory
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+log/
+target/
+out/
