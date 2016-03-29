@@ -2,25 +2,21 @@ package com.github.barteks2x.b173gen.listener;
 
 import com.github.barteks2x.b173gen.Generator;
 import com.github.barteks2x.b173gen.config.WorldConfig;
-import com.github.barteks2x.b173gen.oldgen.*;
-import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import org.bukkit.ChatColor;
-import org.bukkit.Color;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.TreeType;
-import static org.bukkit.TreeType.BIG_TREE;
-import static org.bukkit.TreeType.TREE;
-import org.bukkit.World;
+import com.github.barteks2x.b173gen.oldgen.WorldGenBigTreeOld;
+import com.github.barteks2x.b173gen.oldgen.WorldGenForestOld;
+import com.github.barteks2x.b173gen.oldgen.WorldGenTreeOld;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
-import org.bukkit.event.*;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.server.ServerCommandEvent;
 import org.bukkit.event.world.StructureGrowEvent;
 import org.bukkit.event.world.WorldInitEvent;
+
+import java.util.Random;
 
 public class Beta173GenListener implements Listener {
 
@@ -96,10 +92,10 @@ public class Beta173GenListener implements Listener {
             event.getSender().sendMessage(color + "If you continue default world generator may be used");
         }
     }
-    
+
     @EventHandler(priority = EventPriority.LOWEST)
     public void onCommand(PlayerCommandPreprocessEvent event){
-        if(event.getMessage().startsWith("/reload")){
+        if(event.getMessage().equalsIgnoreCase("/reload")){
             String color = ChatColor.RED.toString();
             event.getPlayer().sendMessage(color +"[173generator] detected using /reload command.");
             event.getPlayer().sendMessage(color + "/reload command is NOT supported by 173generator. It WILL cause issues. Restart your server.");
